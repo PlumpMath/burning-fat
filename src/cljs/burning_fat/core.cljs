@@ -33,9 +33,6 @@
 (secretary/defroute "/" []
   (session/put! :current-page home-page))
 
-(secretary/defroute "/about" []
-  (session/put! :current-page about-page))
-
 ;; -------------------------
 ;; Initialize app
 (defn init! []
