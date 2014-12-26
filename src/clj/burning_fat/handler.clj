@@ -6,7 +6,9 @@
             [selmer.parser :refer [render-file]]
             [environ.core :refer [env]]
             [prone.middleware :refer [wrap-exceptions]]
-            [org.httpkit.server :refer [run-server]])
+            [org.httpkit.server :refer [run-server]]
+            [clojure.tools.logging :as log]
+            [ring.middleware.logger :as rlogger])
   (:gen-class))
 
 (defroutes routes
@@ -16,8 +18,12 @@
 
 (def app
   (let [handler (wrap-defaults routes site-defaults)]
-    (if (env :dev?) (wrap-exceptions handler) handler)))
+    (rlogger/wrap-with-logger
+      (if (env :dev?)
+        (wrap-exceptions handler)
+        handler))))
 
 (defn -main []
   (let [port (Integer. (or (env :port) "8080"))]
-    (run-server app {:port port})))
+    (run-server app {:port port})
+    (log/info "server running on port" port)))

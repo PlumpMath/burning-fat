@@ -13,3 +13,5 @@ pom.xml.asc
 *.iml
 .idea
 
+
+resources/public/css/site.min.css

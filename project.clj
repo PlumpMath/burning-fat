@@ -13,7 +13,6 @@
                  [org.clojure/clojurescript "0.0-2496" :scope "provided"]
                  [com.cemerick/piggieback "0.1.3"]
                  [weasel "0.4.2"]
-                 [ring "1.3.2"]
                  [ring/ring-defaults "0.1.2"]
                  [prone "0.8.0"]
                  [compojure "1.3.1"]
@@ -23,14 +22,14 @@
                  [figwheel "0.1.5-SNAPSHOT"]
                  [http-kit "2.1.16"]
                  [com.novemberain/monger "2.0.1"]
-                 [stuarth/clj-oauth2 "0.3.2"]]
+                 [stuarth/clj-oauth2 "0.3.2"]
+                 [org.clojure/tools.logging "0.3.1"]
+                 [ring.middleware.logger "0.5.0"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-environ "1.0.0"]
             [lein-ring "0.8.13"]
             [lein-asset-minifier "0.2.0"]]
-
-  :ring {:handler burning-fat.handler/app}
 
   :min-lein-version "2.5.0"
 
@@ -53,7 +52,6 @@
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
                    :dependencies [[ring-mock "0.1.5"]
-                                  [ring/ring-devel "1.3.2"]
                                   [pjstadig/humane-test-output "0.6.0"]]
 
                    :plugins [[lein-figwheel "0.2.0-SNAPSHOT"]]
@@ -84,6 +82,4 @@
                                               {:optimizations :advanced
                                                :pretty-print false}}}}}
 
-             :production {:ring {:open-browser? false
-                                 :stacktraces?  false
-                                 :auto-reload?  false}}})
+             :production {}})
