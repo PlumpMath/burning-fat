@@ -9,13 +9,19 @@
 ;; -------------------------
 ;; Views
 
+(defn measurement-entry [item]
+  [:li "Item " item])
+
+(defn measurement-list [measurements]
+  [:ul
+   (for [measurement measurements]
+     [measurement-entry measurement])])
+
 (defn home-page []
   [:div [:h2 "Welcome to burning-fat"]
-   [:div [:a {:href "#/about"} "go to about page"]]])
+   [:div [:a {:href "#/about"} "go to about page"]]
+   [:div "A list " [measurement-list (range 5)]]])
 
-(defn about-page []
-  [:div [:h2 "About burning-fat"]
-   [:div [:a {:href "#/"} "go to the home page"]]])
 
 (defn current-page []
   [:div [(session/get :current-page)]])

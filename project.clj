@@ -25,7 +25,8 @@
                  [org.clojure/tools.logging "0.3.1"]
                  [ring.middleware.logger "0.5.0"]
                  [ring/ring-core "1.3.2"]
-                 [ring/ring-devel "1.3.2"]]
+                 [ring/ring-devel "1.3.2"]
+                 [reagent/reagent-cursor "0.1.2"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-environ "1.0.0"]
