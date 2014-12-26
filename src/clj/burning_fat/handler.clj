@@ -8,7 +8,8 @@
             [prone.middleware :refer [wrap-exceptions]]
             [org.httpkit.server :refer [run-server]]
             [clojure.tools.logging :as log]
-            [ring.middleware.logger :as rlogger])
+            [ring.middleware.logger :as rlogger]
+            [ring.middleware.reload :as reload])
   (:gen-class))
 
 (defroutes routes
@@ -20,10 +21,12 @@
   (let [handler (wrap-defaults routes site-defaults)]
     (rlogger/wrap-with-logger
       (if (env :dev?)
-        (wrap-exceptions handler)
+        (-> handler
+            reload/wrap-reload
+            wrap-exceptions)
         handler))))
 
 (defn -main []
-  (let [port (Integer. (or (env :port) "8080"))]
+  (let [port (Integer. (or (env :port) "3000"))]
     (run-server app {:port port})
     (log/info "server running on port" port)))

@@ -23,7 +23,9 @@
                  [http-kit "2.1.16"]
                  [com.novemberain/monger "2.0.1"]
                  [org.clojure/tools.logging "0.3.1"]
-                 [ring.middleware.logger "0.5.0"]]
+                 [ring.middleware.logger "0.5.0"]
+                 [ring/ring-core "1.3.2"]
+                 [ring/ring-devel "1.3.2"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-environ "1.0.0"]
