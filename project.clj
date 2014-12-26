@@ -21,7 +21,9 @@
                  [environ "1.0.0"]
                  [leiningen "2.5.0"]
                  [figwheel "0.1.5-SNAPSHOT"]
-                 [http-kit "2.1.16"]]
+                 [http-kit "2.1.16"]
+                 [com.novemberain/monger "2.0.1"]
+                 [stuarth/clj-oauth2 "0.3.2"]]
 
   :plugins [[lein-cljsbuild "1.0.3"]
             [lein-environ "1.0.0"]
