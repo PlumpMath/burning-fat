@@ -22,7 +22,6 @@
                  [figwheel "0.1.5-SNAPSHOT"]
                  [http-kit "2.1.16"]
                  [com.novemberain/monger "2.0.1"]
-                 [stuarth/clj-oauth2 "0.3.2"]
                  [org.clojure/tools.logging "0.3.1"]
                  [ring.middleware.logger "0.5.0"]]
 
