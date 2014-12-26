@@ -7,8 +7,7 @@
   :source-paths ["src/clj" "src/cljs"]
 
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [com.facebook/react "0.11.2"]
-                 [reagent "0.4.3"]
+                 [reagent "0.5.0-alpha"]
                  [reagent-utils "0.1.0"]
                  [secretary "1.2.1"]
                  [org.clojure/clojurescript "0.0-2496" :scope "provided"]
@@ -21,10 +20,10 @@
                  [selmer "0.7.7"]
                  [environ "1.0.0"]
                  [leiningen "2.5.0"]
-                 [figwheel "0.1.5-SNAPSHOT"]]
+                 [figwheel "0.1.5-SNAPSHOT"]
+                 [http-kit "2.1.16"]]
 
-  :plugins [
-            [lein-cljsbuild "1.0.3"]
+  :plugins [[lein-cljsbuild "1.0.3"]
             [lein-environ "1.0.0"]
             [lein-ring "0.8.13"]
             [lein-asset-minifier "0.2.0"]]
@@ -34,6 +33,8 @@
   :min-lein-version "2.5.0"
 
   :uberjar-name "burning-fat.jar"
+
+  :main burning-fat.handler
 
   :minify-assets
   {:assets

@@ -5,7 +5,9 @@
             [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
             [selmer.parser :refer [render-file]]
             [environ.core :refer [env]]
-            [prone.middleware :refer [wrap-exceptions]]))
+            [prone.middleware :refer [wrap-exceptions]]
+            [org.httpkit.server :refer [run-server]])
+  (:gen-class))
 
 (defroutes routes
   (GET "/" [] (render-file "templates/index.html" {:dev (env :dev?)}))
@@ -15,3 +17,7 @@
 (def app
   (let [handler (wrap-defaults routes site-defaults)]
     (if (env :dev?) (wrap-exceptions handler) handler)))
+
+(defn -main []
+  (let [port (Integer. (or (env :port) "8080"))]
+    (run-server app {:port port})))
